@@ -14,6 +14,19 @@ def get_system_info():
 
 
 def parse_device(device):
+    """
+    Parse device string to standardized format.
+    
+    Args:
+        device (str): Device string like 'cuda', 'cuda:0', '0', etc.
+        
+    Returns:
+        str: Cleaned device string
+    """
+    if device.lower() == "cuda":
+        return "0"  # Default to first CUDA device
+        
+    # Normal parsing for other device specifications
     device = (
         str(device)
         .lower()
